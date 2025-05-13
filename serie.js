@@ -88,8 +88,12 @@ createHtmlElement(isGuardados = true) {
 
         const yaExiste = guardadas.some((s) => s.id === this.id);
 
-        if (yaExiste) {
-          alert("Esta serie ya fue guardada");
+       /* if (yaExiste) {
+          alert("Esta serie ya fue guardada");*/
+          if (yaExiste) {
+  alert(`La serie "${this.name}" ya fue guardada`);
+
+
         } else {
           Serie.guardarSerie(this);
         }

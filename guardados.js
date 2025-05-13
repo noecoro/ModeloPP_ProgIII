@@ -56,6 +56,17 @@ btnOrdenarId.onclick = () => {
   const ordenadas = [...seriesGuardadas].sort((a, b) => a.id - b.id);
   mostrarSeries(ordenadas);
 };
+/**
+ * Elimina del localStorage las series guardadas bajo la clave "seriesGuardadas"
+ * y recarga la página para reflejar los cambios.
+ * 
+ * Esta función se usa para "reiniciar" el estado de la sección de guardados.
+ */
+function reiniciar() {
+  localStorage.removeItem("seriesGuardadas"); // solo borra las series, no todo el storage
+  location.reload(); 
+}
+document.getElementById("borrar").addEventListener("click", reiniciar);
 
 // Cargar al abrir
 cargarGuardadas();
