@@ -54,7 +54,7 @@ header {
 @media (max-width: 550px) {
   main {
     grid-template-columns: 1fr; /* Nav y principal en una sola columna */
-    grid-template-rows: auto auto auto; /* Más filas */
+    grid-template-rows: auto auto auto; /* Ms filas */
   }
 
   #panel-izquierda {

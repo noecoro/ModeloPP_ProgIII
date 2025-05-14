@@ -8,9 +8,9 @@ export class Serie {
   language;
   genres;
   image;
-/**
+  /**
    * Constructor de la clase Serie.
-   * 
+   *
    * @param {number} id - ID unico de la serie
    * @param {string} url - URL de la serie
    * @param {string} name - Nombre de la serie
@@ -26,22 +26,22 @@ export class Serie {
     this.genres = genres;
     this.image = image;
   }
-   /**
+  /**
    * Convierte la instancia actual a un string JSON.
-   * 
-   * @returns {string} Representación JSON de la serie.
+   *
+   * @returns {string} Representacion JSON de la serie.
    */
   toJsonString() {
     return JSON.stringify(this);
   }
   /**
    * Crea una instancia de Serie a partir de un string JSON.
-   * 
+   *
    * @param {string} json - String con formato JSON que representa una serie.
    * @returns {Serie} Instancia de la clase Serie.
    */
   static createFromJsonString(json) {
-    const decoded = JSON.parse(json); 
+    const decoded = JSON.parse(json);
     return new Serie(
       decoded.id,
       decoded.url,
@@ -51,13 +51,13 @@ export class Serie {
       decoded.image
     );
   }
- /**
+  /**
    * Crea un elemento HTML para mostrar la serie como una tarjeta.
-   * 
+   *
    * @param {boolean} [isGuardados=true] - Si es `true`, se muestra el boton de guardar
    * @returns {HTMLElement} Elemento HTML representando la serie
    */
-createHtmlElement(isGuardados = true) {
+  createHtmlElement(isGuardados = true) {
     const container = document.createElement("div");
     container.classList.add("card", "h-100", "shadow-sm");
     //arma el template
@@ -87,13 +87,10 @@ createHtmlElement(isGuardados = true) {
         let guardadas = JSON.parse(localStorage.getItem(clave)) || [];
 
         const yaExiste = guardadas.some((s) => s.id === this.id);
-
-       /* if (yaExiste) {
+        /* if (yaExiste) {
           alert("Esta serie ya fue guardada");*/
-          if (yaExiste) {
-  alert(`La serie "${this.name}" ya fue guardada`);
-
-
+        if (yaExiste) {
+          alert(`La serie "${this.name}" ya fue guardada`);
         } else {
           Serie.guardarSerie(this);
         }
@@ -101,15 +98,15 @@ createHtmlElement(isGuardados = true) {
     }
     return container;
   }
-   /**
+  /**
    * Guarda la serie en el localStorage, si no fue guardada previamente.
-   * 
+   *
    * @param {Serie} serie - Instancia de Serie a guardar.
    */
   static guardarSerie(serie) {
     let seriesGuardadas = "seriesGuardadas";
     let guardadas = JSON.parse(localStorage.getItem(seriesGuardadas)) || [];
-   
+
     const yaExiste = guardadas.some((s) => s.id === serie.id);
 
     if (yaExiste) return;
