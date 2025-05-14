@@ -73,7 +73,7 @@ export class Serie {
         )}</p>
         ${
           isGuardados
-            ? `<button class="btn btn-primary guardar-btn">Guardar</button>`
+            ? `<button class="btn btn-dark guardar-btn">Guardar</button>`
             : ""
         }
       </div>
